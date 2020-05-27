@@ -1,8 +1,5 @@
 name: terraform
-on:
-  push:
-    paths:
-      - 'teams'
+on: push
 
 jobs:
   terraform:
