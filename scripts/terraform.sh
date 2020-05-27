@@ -26,7 +26,6 @@ for dir in $dirs; do
         terraform fmt -check -diff | tfnotify --config ../../.tfnotify.github.yml fmt -t "## ${dir}"
     elif [ "$1" = "plan" ]; then
         terraform plan -refresh=false | tfnotify --config ../../.tfnotify.github.yml plan -t "## ${dir}"
-        terraform apply -auto-approve | tfnotify --config ../../.tfnotify.slack.yml apply -t "${dir}"
     elif [ "$1" = "apply" ]; then
         terraform apply -auto-approve | tfnotify --config ../../.tfnotify.slack.yml apply -t "${dir}"
     fi
