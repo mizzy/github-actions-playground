@@ -23,9 +23,9 @@ for dir in $dirs; do
     cd $dir
     terraform init
     if [ "$1" = "fmt" ]; then
-        terraform fmt -check | tfnotify fmt -t "## ${dir}" -c ../.tfnotify.yml
+        terraform fmt -check | tfnotify fmt -t "## ${dir}" --config ../.tfnotify.yml
     elif [ "$1" = "plan" ]; then
-        terraform plan | tfnotify plan -t "## ${dir}" -c ../.tfnotify.yml
+        terraform plan | tfnotify plan -t "## ${dir}" --config ../.tfnotify.yml
     elif [ "$1" = "apply" ]; then
         terraform apply -auto-approve
     fi
