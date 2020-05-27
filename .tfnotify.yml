@@ -1,3 +1,4 @@
+ci: github-actions
 notifier:
   github:
     token: $GITHUB_TOKEN
