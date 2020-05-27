@@ -1,5 +1,5 @@
 resource "null_resource" "foo" {
-provisioner "local-exec" {
-command = "echo"
- }
+  provisioner "local-exec" {
+    command = "echo"
+  }
 }
