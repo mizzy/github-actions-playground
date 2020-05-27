@@ -6,6 +6,8 @@ run_terraform() {
     echo $1
 }
 
+git fetch origin master
+
 CURRENT_BRANCH=`git rev-parse --abbrev-ref @`
 TF_LOG='INFO'
 
@@ -19,6 +21,7 @@ dirs=`git diff $TARGET --name-only | grep teams | xargs dirname | sort | uniq`
 
 for dir in $dirs; do
     cd $dir
+    terraform init
     if [ "$1" = "fmt" ]; then
         terraform fmt -check
     elif [ "$1" = "plan" ]; then
