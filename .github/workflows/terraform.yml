@@ -29,12 +29,12 @@ jobs:
         &&  sudo unzip -o terraform.zip -d /usr/local/bin
 
     - name: Setup tfnotify
-        env:
-          VERSION: 0.6.0
-        run: >-
-          curl -fsSLo tfnotify.tar.gz
-          https://github.com/mercari/tfnotify/releases/download/v${VERSION}/tfnotify_linux_amd64.tar.gz
-          && sudo tar -xf tfnotify.tar.gz -C /usr/local/bin tfnotify
+      env:
+        VERSION: 0.6.0
+      run: >-
+        curl -fsSLo tfnotify.tar.gz
+        https://github.com/mercari/tfnotify/releases/download/v${VERSION}/tfnotify_linux_amd64.tar.gz
+        && sudo tar -xf tfnotify.tar.gz -C /usr/local/bin tfnotify
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
