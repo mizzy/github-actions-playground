@@ -10,7 +10,7 @@ CURRENT_BRANCH=`git rev-parse --abbrev-ref @`
 TF_LOG='INFO'
 
 if [ $CURRENT_BRANCH = "master" ]; then
-  TARGET="HEAD^ HEAD"
+  TARGET="HEAD^"
 else
   TARGET="origin/master"
 fi
