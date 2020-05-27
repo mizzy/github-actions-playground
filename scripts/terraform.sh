@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -u
+set -eux
 
 run_terraform() {
     echo $1

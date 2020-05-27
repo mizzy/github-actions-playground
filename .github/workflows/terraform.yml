@@ -24,7 +24,7 @@ jobs:
 
     - name: Setup Terraform
       env:
-        VERSION: 0.12.24
+        VERSION: 0.12.25
       run: >-
         curl -fsSLo terraform.zip
         https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip
