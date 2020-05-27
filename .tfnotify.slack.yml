@@ -8,13 +8,13 @@ notifier:
 terraform:
   apply:
     template: |
-      {{ .Title }} <sup>[CI link]( {{ .Link }} )</sup>
       {{ .Message }}
       {{if .Result}}
-      <pre><code>{{ .Result }}
-      </pre></code>
+      ```
+      {{ .Result }}
+      ```
       {{end}}
-      <details><summary>Details (Click me)</summary>
+      ```
+      {{ .Body }}
+      ```
 
-      <pre><code>{{ .Body }}
-      </pre></code></details>
