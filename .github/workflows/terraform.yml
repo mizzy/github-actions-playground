@@ -52,4 +52,4 @@ jobs:
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: ./scripts/terraform.sh apply
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
