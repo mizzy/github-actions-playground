@@ -32,7 +32,7 @@ jobs:
 
     - name: Setup tfnotify
       env:
-        VERSION: 0.6.0
+        VERSION: 0.6.1
       run: >-
         curl -fsSLo tfnotify.tar.gz
         https://github.com/mercari/tfnotify/releases/download/v${VERSION}/tfnotify_linux_amd64.tar.gz
