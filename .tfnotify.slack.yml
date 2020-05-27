@@ -1,0 +1,20 @@
+---
+ci: github-actions
+notifier:
+  slack:
+    token: $SLACK_TOKEN
+    channel: test
+    bot: tfnotiry
+terraform:
+  apply:
+    template: |
+      {{ .Message }}
+      {{if .Result}}
+      ```
+      {{ .Result }}
+      ```
+      {{end}}
+      ```
+      {{ .Body }}
+      ```
+

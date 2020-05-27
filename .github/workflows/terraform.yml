@@ -1,9 +1,5 @@
 name: terraform
-on:
-  push:
-    branches:
-    - master
-  pull_request:
+on: push
 
 jobs:
   terraform:
@@ -24,7 +20,7 @@ jobs:
 
     - name: Setup Terraform
       env:
-        VERSION: 0.12.24
+        VERSION: 0.12.25
       run: >-
         curl -fsSLo terraform.zip
         https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip
@@ -32,7 +28,7 @@ jobs:
 
     - name: Setup tfnotify
       env:
-        VERSION: 0.6.0
+        VERSION: 0.6.1
       run: >-
         curl -fsSLo tfnotify.tar.gz
         https://github.com/mercari/tfnotify/releases/download/v${VERSION}/tfnotify_linux_amd64.tar.gz
@@ -41,13 +37,19 @@ jobs:
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
       run: ./scripts/terraform.sh fmt
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: ./scripts/terraform.sh plan
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: ./scripts/terraform.sh apply
+      env:
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
