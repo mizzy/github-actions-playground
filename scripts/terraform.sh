@@ -20,6 +20,9 @@ fi
 dirs=`git diff $TARGET --name-only | grep teams | xargs dirname | sort | uniq`
 
 for dir in $dirs; do
+    if [ ! -d $dir ]; then
+        break
+    fi
     cd $dir
     terraform init
     if [ "$1" = "fmt" ]; then
