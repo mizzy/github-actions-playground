@@ -30,6 +30,6 @@ for dir in $dirs; do
     elif [ "$1" = "plan" ]; then
         terraform plan -refresh=false | tfnotify --config ../../.tfnotify.github.yml plan -t "## ${dir}"
     elif [ "$1" = "apply" ]; then
-        terraform apply -auto-approve -no-color | tfnotify --config ../../.tfnotify.slack.yml apply -t "${dir}"
+        terraform apply -auto-approve -no-color | tfnotify --config ../../.tfnotify.slack.yml apply -t "${GITHUB_REPOSITORY}/${dir}"
     fi
 done

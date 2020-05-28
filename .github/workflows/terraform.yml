@@ -53,6 +53,3 @@ jobs:
       run: ./scripts/terraform.sh apply
       env:
         SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
-
-    - name: env
-      run: env
