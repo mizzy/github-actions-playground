@@ -9,12 +9,6 @@ terraform:
   apply:
     template: |
       {{ .Message }}
-      {{if .Result}}
-      ```
-      {{ .Result }}
-      ```
-      {{end}}
-      ```
       {{ .Body }}
       ```
 
