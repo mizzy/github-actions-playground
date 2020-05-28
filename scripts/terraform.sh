@@ -21,7 +21,7 @@ dirs=`git diff $TARGET --name-only | grep teams | xargs dirname | sort | uniq`
 
 for dir in $dirs; do
     if [ ! -d $dir ]; then
-        break
+        continue
     fi
     cd $dir
     terraform init
